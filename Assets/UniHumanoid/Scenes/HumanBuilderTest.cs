@@ -67,7 +67,30 @@ namespace UniHumanoid
             {
                 Add(HumanBodyBones.Head, HumanBodyBones.Neck, new Vector3(0, len, 0));
             }
+
+            /// <summary>
+            /// 頭の位置から体幹を自動的に作成する
+            /// </summary>
+            public void AddTrunk(float headHight)
+            {
+                var trunkUnit = headHight / 8f; //８頭身とする
+                AddHips(trunkUnit * 4f, trunkUnit);
+                AddSpine(trunkUnit / 2f);
+                AddChest(trunkUnit / 2f);
+                AddNeck(trunkUnit);
+                AddHead(trunkUnit);
+            }
+
             #endregion
+
+            /// <summary>
+            /// 腕の長さから自動的に算出する
+            /// </summary>
+            public void AddArm(float shoulderOffset, float armLength)
+            {
+                var armUnit = armLength / 9f;
+                AddArm(shoulderOffset, armUnit * 5f, armUnit * 4f, armUnit);
+            }
 
             public void AddArm(float shoulder, float upper, float lower, float hand)
             {
@@ -80,6 +103,15 @@ namespace UniHumanoid
                 Add(HumanBodyBones.RightUpperArm, HumanBodyBones.RightShoulder, new Vector3(upper, 0, 0));
                 Add(HumanBodyBones.RightLowerArm, HumanBodyBones.RightUpperArm, new Vector3(lower, 0, 0));
                 Add(HumanBodyBones.RightHand, HumanBodyBones.RightLowerArm, new Vector3(hand, 0, 0));
+            }
+
+            /// <summary>
+            /// 腰の位置から自動的に算出する
+            /// </summary>
+            public void AddLeg(float distance)
+            {
+                var LegUnit = m_skeleton[HumanBodyBones.Hips].position.y / 10f;
+                AddLeg(distance, LegUnit * 3f, LegUnit * 3f, LegUnit, LegUnit);
             }
 
             public void AddLeg(float distance, float upper, float lower, float foot, float toe)
