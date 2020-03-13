@@ -5,6 +5,4 @@ using UnityEngine;
 public class BodyPartPosition : MonoBehaviour
 {
     public HumanBodyBones BodyBone;
-
-
 }

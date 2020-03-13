@@ -11,16 +11,33 @@ public class CreateAvatar : MonoBehaviour
     [SerializeField] Transform LeftLeg;
     [SerializeField] Transform Hip;
 
-    Dictionary<HumanBodyBones, Transform> boneDict = new Dictionary<HumanBodyBones, Transform>();
+    public BodyPartPosition BodyPartPositionPrefab;
+
+    Dictionary<HumanBodyBones, BodyPartPosition> boneDict = new Dictionary<HumanBodyBones, BodyPartPosition>();
 
     HumanBodyBones[] createList = new HumanBodyBones[]{
+        // Trunk
         HumanBodyBones.Head,
+        HumanBodyBones.Neck,
+        HumanBodyBones.Chest,
+        HumanBodyBones.Spine,
+        HumanBodyBones.Hips,
+        // Arms
         HumanBodyBones.LeftShoulder,
+        HumanBodyBones.LeftUpperArm,
+        HumanBodyBones.LeftLowerArm,
+        HumanBodyBones.LeftHand,
         HumanBodyBones.RightShoulder,
+        HumanBodyBones.RightUpperArm,
+        HumanBodyBones.RightLowerArm,
+        HumanBodyBones.RightHand,
+        // Legs
         HumanBodyBones.LeftLowerLeg,
-        HumanBodyBones.RightLowerLeg,
         HumanBodyBones.LeftUpperLeg,
+        HumanBodyBones.LeftFoot,
+        HumanBodyBones.RightLowerLeg,
         HumanBodyBones.RightUpperLeg,
+        HumanBodyBones.RightFoot,
     };
 
 
@@ -30,8 +47,10 @@ public class CreateAvatar : MonoBehaviour
 
     }
 
-    private void CreateParts()
+    private void CreateParts(HumanBodyBones bone)
     {
+        var go = Instantiate(BodyPartPositionPrefab, Vector3.zero, Quaternion.identity) as BodyPartPosition;
 
+        
     }
 }

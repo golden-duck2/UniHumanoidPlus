@@ -65,11 +65,11 @@ public class SkeletonBuilder
     public void AddTrunk(float headHight)
     {
         var trunkUnit = headHight / 8f; //８頭身とする
-        AddHips(trunkUnit * 4f, trunkUnit);
+        AddHips(trunkUnit * 4f, trunkUnit / 2f);
         AddSpine(trunkUnit / 2f);
-        AddChest(trunkUnit / 2f);
-        AddNeck(trunkUnit);
-        AddHead(trunkUnit);
+        AddChest(trunkUnit);
+        AddNeck(trunkUnit / 2f);
+        AddHead(trunkUnit / 2f);
     }
 
     #endregion
